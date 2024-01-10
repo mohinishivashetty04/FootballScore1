@@ -44,9 +44,7 @@ export class MatchesComponent implements OnInit {
         this.lastMatches = data.response.slice(0, 10);
         console.log("DDDDDDDDDDDDDDDDDDDDDDDDD", this.lastMatches);
       },
-      (error: any) => {
-        console.error(`Error fetching data`, error);
-      }
+     
     );
   }
 
