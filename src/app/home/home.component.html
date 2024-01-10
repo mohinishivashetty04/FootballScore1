@@ -1,0 +1,36 @@
+
+<mat-tab-group>
+    <mat-tab *ngFor="let tab of tabs" [label]="tab.label">
+      <table class="table-container" *ngIf="tab.content && tab.content.length > 0">
+       
+        <tr>
+          <th>Rank</th>
+          <th>logo</th>
+          <th>Name</th>
+          <th>Games</th>
+          <th>W</th>
+          <th>L</th>
+          <th>D</th>
+          <th>Goal Diffrence</th>
+          <th>Points</th>
+         
+        </tr>
+       
+        <ng-container *ngFor="let standing of tab.content">
+          <tr>
+            <td>{{ standing.rank }}</td>
+            <td><img src="{{ standing.team.logo }}" alt="" style="height: 30px;"></td>
+            <td (click)="navigateToTeamPage(standing.team.id, tab.label)">{{ standing.team.name }}</td>
+            <td>{{ standing.all.played }}</td>
+            <td>{{ standing.all.win }}</td>
+            <td>{{ standing.all.lose }}</td>
+            <td>{{ standing.all.draw }}</td>
+            <td>{{ standing.goalsDiff }}</td>
+            <td>{{ standing.points }}</td>
+          </tr>
+        </ng-container>
+      </table>
+      <div *ngIf="tab.content && tab.content.length === 0">No content available for {{ tab.label }}</div>
+    </mat-tab>
+  </mat-tab-group>
+  

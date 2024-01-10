@@ -1,0 +1,21 @@
+<!-- matches.component.html -->
+
+<table>
+   
+    <tbody>
+      <tr *ngFor="let match of lastMatches">
+        <td><img src="{{ match.teams.home.logo }}" alt="" style="height: 30px;"></td>
+        <td>{{ match.teams.home.name }}</td>
+        <td>{{ match.goals.home }}</td>
+          <td>-</td>        
+          <td><img src="{{ match.teams.away.logo }}" alt="" style="height: 30px;"></td>    
+        <td>{{ match.teams.away.name }}</td>
+
+        <td>{{ match.goals.away }}</td>
+
+        <!-- Add more columns as needed -->
+      </tr>
+    </tbody>
+  </table>
+  
+<button (click)="goBack()">Back</button>
