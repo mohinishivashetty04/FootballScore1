@@ -30,14 +30,7 @@ interface Standings {
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  animations: [
-    trigger('translateTab', [
-      transition(':enter', [
-        style({ transform: 'translateX(-100%)' }),
-        animate('500ms', style({ transform: 'translateX(0)' })),
-      ]),
-    ]),
-  ],
+  
 })
 export class HomeComponent {
   @ViewChild(MatTabGroup) tabGroup!: MatTabGroup;
