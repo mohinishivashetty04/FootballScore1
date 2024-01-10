@@ -3,8 +3,24 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 interface Team {
+  id: number;
   logo: string;
   name: string;
+}
+
+interface AllStats {
+  played: number;
+  win: number;
+  lose: number;
+  draw: number;
+}
+
+interface Standings {
+  rank: number;
+  team: Team;
+  all: AllStats;
+  goalsDiff: number;
+  points: number;
 }
 
 interface Match {
@@ -27,7 +43,7 @@ export class FootballService {
 
   constructor(private http: HttpClient) {}
 
-  getContent(country: number): Observable<{ response: [{ league: { standings: any[] } }] }> {
+  getContent(country: number): Observable<{ response: [{ league: { standings: Standings[] } }] }> {
     const url = `${this.apiUrl}/standings?league=${country}&season=2023`;
 
     const headers = new HttpHeaders({
@@ -37,7 +53,7 @@ export class FootballService {
 
     const options = { headers };
 
-    return this.http.get<{ response: [{ league: { standings: any[] } }] }>(url, options);
+    return this.http.get<{ response: [{ league: { standings: Standings[] } }] }>(url, options);
   }
 
   getMatches(team: string): Observable<{ response: Match[] }> {
