@@ -1,6 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatTabGroup } from '@angular/material/tabs';
-import { trigger, transition, style, animate } from '@angular/animations';
 import { FootballService } from '../football.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -68,9 +67,7 @@ export class HomeComponent {
             console.log("%%%%%%%%%%%%%%%%%%%5555",tab.content)
             localStorage.setItem(localStorageKey, JSON.stringify(content.response[0].league.standings));
           },
-          (error: any) => {
-            console.error(`Error fetching content for ${tab.label}:`, error);
-          }
+        
         );
       }
     });
